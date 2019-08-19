@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,8 +50,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'register_password' => ['required', 'string', 'min:8', 'confirmed'],
+            'university' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -63,10 +64,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+
+        if ($request->hasFile('avatar')) {
+            if ($request->file('avatar')->isValid()) {
+                $path = $request->file('avatar')->store(config('custom.file_storage.upload_path'));
+                $path = str_replace(config('custom.file_storage.upload_path') . '/', '', $path);
+            }
+        }
+
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'email' => $data['register_email'],
+            'password' => Hash::make($data['register_password']),
+            'university' => $data['university'],
+            'batch_id' => $data['batch_id'],
+            'language_id' => $data['language_id'],
+            'position_id' => $data['position_id'],
+            'user_id' => $data['primary_trainer'],
+            'avatar' => $path,
         ]);
     }
 }

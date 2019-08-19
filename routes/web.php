@@ -12,5 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.profile');
+})->middleware('auth');;
+
+Route::get('/login', function () {
+    return view('home.login');
 });
+
+Route::get('/tracking', function () {
+    return view('home.tracking');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
