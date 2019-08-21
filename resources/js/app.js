@@ -36,11 +36,13 @@ Vue.component('home-component', require('./components/home/HomeComponent.vue').d
 import ProfileContentComponent from './components/home/page/body/content/ProfileContentComponent.vue'
 import TrackingContentComponent from './components/home/page/body/content/TrackingContentComponent.vue'
 import LanguageAdminContentComponent from './components/home/page/body/content/LanguageAdminContentComponent.vue'
+import BatchContentComponent from './components/home/page/body/content/BatchContentComponent.vue'
 
 const routes = [
     { path: '/profile', component: ProfileContentComponent },
     { path: '/tracking', component: TrackingContentComponent },
     { path: '/language', component: LanguageAdminContentComponent },
+    { path: '/batch', component: BatchContentComponent},
 ]
 
 const router = new VueRouter({
