@@ -11,7 +11,6 @@
 	<link href="bower-components/managetrainee-bower/css/datatables.bundle.css" rel="stylesheet" type="text/css" />
 @endsection
 
-
 @section('script')
 	<script src="bower-components/managetrainee-bower/js/basic.js" type="text/javascript"></script>
 	<script src="bower-components/managetrainee-bower/js//datatables.bundle.js" type="text/javascript"></script>

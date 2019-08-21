@@ -22,6 +22,12 @@
                         <span class="m-menu__link-text">Language</span>
                     </router-link>
                 </li>
+                <li class="m-menu__item  m-menu__item--submenu" m-menu-submenu-toggle="hover">
+                    <router-link to="/batch" class="m-menu__link m-menu__toggle">
+                        <i class="m-menu__link-icon flaticon-share"></i>
+                        <span class="m-menu__link-text">Batch</span>
+                    </router-link>
+                </li>
             </ul>
         </div>
         <!-- END: Aside Menu -->

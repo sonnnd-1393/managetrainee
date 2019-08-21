@@ -11,7 +11,7 @@
             <SubHeaderComponent></SubHeaderComponent>
 
             <router-view>
-                
+
             </router-view>
         </div>
     </div>

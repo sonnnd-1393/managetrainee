@@ -27,5 +27,6 @@ Route::get('/tracking', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/language', 'LanguageController@index');
 
-Route::get('/language', 'LanguageController@index')->name('home');
+Route::get('/test', 'BatchController@index');

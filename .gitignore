@@ -9,8 +9,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/public/bower-components
-/public/css
 /public/js
+/public/css
+/public/bower-components
 /public/mix-manifest.json
 .vscode/
