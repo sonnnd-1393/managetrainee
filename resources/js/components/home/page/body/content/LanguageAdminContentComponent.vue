@@ -766,10 +766,7 @@
                 </table>
             </div>
         </div>
-
-        <!-- END EXAMPLE TABLE PORTLET-->
     </div>
-    <script src="bower-components/managetrainee-bower/js//datatables.bundle.js" type="text/javascript"></script>
 </template>
 
 <script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Batch\BatchRepositoryInterface;
+use Yajra\Datatables\Datatables;
 
 class BatchController extends Controller
 {
@@ -22,7 +23,16 @@ class BatchController extends Controller
     public function index()
     {
         $data = $this->batchRepository->getAll();
-        dd($data);
+        // dd($data);
+        return Datatables::of($data)
+            ->addColumn('action', function ($data) {
+                return '<a href="#" class="btn btn-sm btn-warning edit" id="show" v-on:click="edit()" data-id="' . $data->id . '"><i class="fa fa-eye"></i></a>
+                        <a href="" class="btn btn-sm btn-danger delete" v-on:click="delete()" data-id="' . $data->id . '"><i class="fa fa-trash"></i></a>';
+            })
+            ->rawColumns([ 
+                'action',
+            ])
+            ->make(true);
     }
 
     /**
@@ -43,7 +53,9 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $data = $this->batchRepository->create($request->all());
+
+        return response()->json([ 'error' => false, 'success' => 'success' ]);
     }
 
     /**
