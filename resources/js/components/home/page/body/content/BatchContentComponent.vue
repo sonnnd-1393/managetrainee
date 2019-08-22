@@ -1,10 +1,5 @@
 <template>
     <div class="m-content">
-        <div class="m-alert m-alert--icon m-alert--air m-alert--square alert alert-dismissible m--margin-bottom-30" role="alert">
-            <div class="m-alert__icon">
-                <i class="flaticon-exclamation m--font-brand"></i>
-            </div>
-        </div>
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__head">
                 <div class="m-portlet__head-caption">
@@ -17,12 +12,45 @@
                 <div class="m-portlet__head-tools">
                     <ul class="m-portlet__nav">
                         <li class="m-portlet__nav-item">
-                            <a href="#" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                            <a href="#" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air" data-toggle="modal" data-target="#myModal">
                                 <span>
                                     <i class="la la-plus"></i>
                                     <span>New record</span>
                                 </span>
                             </a>
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Modal Header</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="" method="POST" role="form" v-on:submit="add()">
+                                                <legend>Form title</legend>
+                                            
+                                                <div class="form-group">
+                                                    <label for="">Name</label>
+                                                    <input type="text" class="form-control" id="name" placeholder="Input field">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Start Date</label>
+                                                    <input type="datetime-local" class="form-control" id="startDate" placeholder="Start Date">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">End Date</label>
+                                                    <input type="datetime-local" class="form-control" id="endDate" placeholder="End Date">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button v-on:click="add()">Click</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </li>
                         <li class="m-portlet__nav-item"></li>
                         <li class="m-portlet__nav-item">
@@ -89,7 +117,7 @@
             </div>
             <div class="m-portlet__body">
 
-                <!--begin: Datatable -->
+
                 <table class="table table-striped- table-bordered table-hover table-checkable" id="table-batch">
                     <thead>
                         <tr>
@@ -103,16 +131,80 @@
                 </table>
             </div>
         </div>
-
-        <!-- END EXAMPLE TABLE PORTLET-->
     </div>
-    <script src="bower-components/managetrainee-bower/js/batch.js" type="text/javascript"></script>
 </template>
+
+
 
 <script>
     export default {
         mounted() {
-            console.log('Component Language Admin mounted.')
-        }
+            $('#table-batch').DataTable({
+                destroy: true,
+                processing: true,
+                serverSide: true,
+                ajax: 'api/batch',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'start_date', name: 'start_date' },
+                    { data: 'end_date', name: 'end_date' },
+                    { data: 'action', name: 'action' },
+                ],
+            });
+        },
+            // data(){
+            //     return {
+            //         columns: [
+            //             { data: 'id', name: 'id' },
+            //             { data: 'name', name: 'name' },
+            //             { data: 'start_date', name: 'start_date' },
+            //             { data: 'end_date', name: 'end_date' },
+            //             { data: 'action', name: 'action' },
+            //         ]
+            //     }
+            // },
+
+            methods:{
+                // getUsers: function() {
+                //     axios.get('/api/batch').then(function(response){
+                //         this.rows = response.data;
+                //     }.bind(this));
+                // },
+
+                add: function() {
+                    axios.post('api/batch', {
+                        name: $('#name').val(),
+                        start_date: $('#startDate').val(),
+                        end_date: $('#endDate').val(),
+                    })
+                    .then(function (response) {
+                        $('#myModal').modal('hide');
+                        $('.fade').hide();
+                        $('#table-batch').DataTable().ajax.reload(null, false);
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                },
+
+                edit: function() {
+                    alert('dddd');
+                    var id=$(this).attr('data-id');
+                    alert(id);
+                },
+
+                delete:function() {
+                    alert('delete');
+                }
+
+
+            },
+
+            // created: function(){
+            //     this.getUsers()
+            // }
+
     }
 </script>
