@@ -18,6 +18,7 @@
                                     <span>New record</span>
                                 </span>
                             </a>
+                            <!-- <a href="#" class="btn btn-sm btn-warning edit" id="show" v-on:click="edittt()" ><i class="fa fa-eye"></i></a> -->
                             <div id="myModal" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -139,72 +140,63 @@
 <script>
     export default {
         mounted() {
-            $('#table-batch').DataTable({
-                destroy: true,
-                processing: true,
-                serverSide: true,
-                ajax: 'api/batch',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    { data: 'start_date', name: 'start_date' },
-                    { data: 'end_date', name: 'end_date' },
-                    { data: 'action', name: 'action' },
-                ],
-            });
+            // $('#table-batch').DataTable({
+            //     destroy: true,
+            //     processing: true,
+            //     serverSide: true,
+            //     ajax: 'api/batch',
+            //     columns: [
+            //         { data: 'id', name: 'id' },
+            //         { data: 'name', name: 'name' },
+            //         { data: 'start_date', name: 'start_date' },
+            //         { data: 'end_date', name: 'end_date' },
+            //         { data: 'action', name: 'action' },
+            //     ],
+            // });
+            // let spans = document.querySelectorAll('.test');
+            // spans.forEach(el => {
+            //     el.addEventListener('click', this.clickTag);
+            //     edittt();
+            // })
+            // spans.addEventListener('click', function(){
+            //     alert('s');
+            // });
         },
-            // data(){
-            //     return {
-            //         columns: [
-            //             { data: 'id', name: 'id' },
-            //             { data: 'name', name: 'name' },
-            //             { data: 'start_date', name: 'start_date' },
-            //             { data: 'end_date', name: 'end_date' },
-            //             { data: 'action', name: 'action' },
-            //         ]
-            //     }
+
+        methods:{
+            // getUsers: function() {
+            //     axios.get('/api/batch').then(function(response){
+            //         this.rows = response.data;
+            //     }.bind(this));
             // },
 
-            methods:{
-                // getUsers: function() {
-                //     axios.get('/api/batch').then(function(response){
-                //         this.rows = response.data;
-                //     }.bind(this));
-                // },
-
-                add: function() {
-                    axios.post('api/batch', {
-                        name: $('#name').val(),
-                        start_date: $('#startDate').val(),
-                        end_date: $('#endDate').val(),
-                    })
-                    .then(function (response) {
-                        $('#myModal').modal('hide');
-                        $('.fade').hide();
-                        $('#table-batch').DataTable().ajax.reload(null, false);
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                },
-
-                edit: function() {
-                    alert('dddd');
-                    var id=$(this).attr('data-id');
-                    alert(id);
-                },
-
-                delete:function() {
-                    alert('delete');
-                }
-
-
+            add: function() {
+                axios.post('api/batch', {
+                    name: $('#name').val(),
+                    start_date: $('#startDate').val(),
+                    end_date: $('#endDate').val(),
+                })
+                .then(function (response) {
+                    $('#myModal').modal('hide');
+                    $('.fade').hide();
+                    $('#table-batch').DataTable().ajax.reload(null, false);
+                    console.log(response);
+                    $('.m-portlet__nav-item').append(`<a href="#" class="btn btn-sm btn-warning edit" id="show" v-on:click="edittt()" ><i class="fa fa-eye"></i></a>`);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             },
 
-            // created: function(){
-            //     this.getUsers()
-            // }
+            edittt: function() {
+                alert('dddd');
+                // var id=$(this).attr('data-id');
+                // alert(id);
+            },
 
+            delete:function() {
+                alert('delete');
+            }
+        }
     }
 </script>
