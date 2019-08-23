@@ -23,11 +23,26 @@ class BatchController extends Controller
     public function index()
     {
         $data = $this->batchRepository->getAll();
+        // // dd($data);
+        // return Datatables::of($data)
+        //     ->addColumn('action', function ($data) {
+        //         return '<a href="#" class="btn btn-sm btn-warning edit" data-id="' . $data->id . '" @click="edittt()" ><i class="fa fa-edit"></i></a>
+        //                 <a href="" class="btn btn-sm btn-danger delete" v-on:click.native="delete()" data-id="' . $data->id . '"><i class="fa fa-trash"></i></a>';
+        //     })
+        //     ->rawColumns([ 
+        //         'action',
+        //     ])
+        //     ->make(true);
+        return view('home.base', compact('data'));
+    }
+
+    public function batchDatatable(){
+        $data = $this->batchRepository->getAll();
         // dd($data);
         return Datatables::of($data)
             ->addColumn('action', function ($data) {
-                return '<a href="#" class="btn btn-sm btn-warning edit" id="show" v-on:click="edit()" data-id="' . $data->id . '"><i class="fa fa-eye"></i></a>
-                        <a href="" class="btn btn-sm btn-danger delete" v-on:click="delete()" data-id="' . $data->id . '"><i class="fa fa-trash"></i></a>';
+                return '<a href="#" class="btn btn-sm btn-warning edit" data-id="' . $data->id . '" @click="edittt()" ><i class="fa fa-edit"></i></a>
+                        <a href="" class="btn btn-sm btn-danger delete" v-on:click.native="delete()" data-id="' . $data->id . '"><i class="fa fa-trash"></i></a>';
             })
             ->rawColumns([ 
                 'action',
@@ -103,3 +118,4 @@ class BatchController extends Controller
         //
     }
 }
+
