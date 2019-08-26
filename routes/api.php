@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('batch/datatable', 'BatchController@batchDatatable');
 
 Route::resource('batch', 'BatchController');
+
+Route::resource('language', 'LanguageController');

@@ -113,16 +113,16 @@
                                 </span>
                                 <span class="m-list-search__result-item-text">Marc-André ter Stegen</span>
                                 <div class="m-demo__preview">
-                                        <span class="m-type m--bg-success" style="">
-                                            <span class="m--font-light" style="font-size: 1rem;">Git</span>
-                                        </span>
-                                        <span class="m-type m--bg-danger">
-                                            <span class="m--font-light" style="font-size: 1rem;">SQL</span>
-                                        </span>
-                                        <spakn class="m-type m--bg-danger">
-                                            <span class="m--font-light" style="font-size: 1rem;">PHP</span>
-                                        </spakn>
-                                    </div>
+                                    <span class="m-type m--bg-success" style="">
+                                        <span class="m--font-light" style="font-size: 1rem;">Git</span>
+                                    </span>
+                                    <span class="m-type m--bg-danger">
+                                        <span class="m--font-light" style="font-size: 1rem;">SQL</span>
+                                    </span>
+                                    <span class="m-type m--bg-danger">
+                                        <span class="m--font-light" style="font-size: 1rem;">PHP</span>
+                                    </span>
+                                </div>
                             </a>
 
                             <span class="m-list-search__result-category">

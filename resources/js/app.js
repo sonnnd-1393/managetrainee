@@ -9,9 +9,11 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import DataTable from 'laravel-vue-datatable';
+import store from "./store/index.js";
+import router from './router/index.js';
 
-Vue.use(VueRouter)
+Vue.use(DataTable);
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,31 +29,30 @@ Vue.use(VueRouter)
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('home-component', require('./components/home/HomeComponent.vue').default);
 
+Vue.component(
+  'passport-clients',
+  require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+  'passport-authorized-clients',
+  require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+  'passport-personal-access-tokens',
+  require('./components/passport/PersonalAccessTokens.vue')
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import ProfileContentComponent from './components/home/page/body/content/ProfileContentComponent.vue'
-import TrackingContentComponent from './components/home/page/body/content/TrackingContentComponent.vue'
-import LanguageAdminContentComponent from './components/home/page/body/content/LanguageAdminContentComponent.vue'
-import BatchContentComponent from './components/home/page/body/content/BatchContentComponent.vue'
-
-const routes = [
-    { path: '/profile', component: ProfileContentComponent },
-    { path: '/tracking', component: TrackingContentComponent },
-    { path: '/language', component: LanguageAdminContentComponent },
-    { path: '/batch', component: BatchContentComponent},
-]
-
-const router = new VueRouter({
-    mode: 'history',
-    routes // short for `routes: routes`
-})
-
 const app = new Vue({
     el: '#app',
+    store,
     router,
   }).$mount('#app')
 
