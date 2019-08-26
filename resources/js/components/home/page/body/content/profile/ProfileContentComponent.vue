@@ -445,11 +445,17 @@
                 </div>
             </div>
         </div>
+
+        <ModalComponent></ModalComponent>
     </div>
 </template>
 
 <script>
+    import ModalComponent from './ModalComponent.vue';
     export default {
+        components: {
+            ModalComponent,
+        },
         mounted() {
             console.log('Component Content mounted.')
         }

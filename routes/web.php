@@ -30,4 +30,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/language', 'LanguageController@index');
 // Route::get('/batch', 'BatchController@index');
 
-// Route::get('/test', 'BatchController@index');
+// Route::resource('language', 'LanguageController');

@@ -22,16 +22,12 @@
     import LeftAsideComponent from './LeftAsideComponent.vue';
     import AsideMenuComponent from './AsideMenuComponent.vue';
     import SubHeaderComponent from './SubHeaderComponent.vue';
-    import ProfileContentComponent from './content/ProfileContentComponent.vue';
-    import TrackingContentComponent from './content/TrackingContentComponent.vue';
 
     export default {
         components: {
             LeftAsideComponent,
             AsideMenuComponent,
             SubHeaderComponent,
-            ProfileContentComponent,
-            TrackingContentComponent,
         },
         mounted() {
             console.log('Component Body mounted.')
