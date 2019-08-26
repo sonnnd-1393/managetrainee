@@ -34,7 +34,9 @@
         },
         data() {
             return {
-
+                updatedData: {
+                    'name': '',
+                },
             }
         },
         computed: {
