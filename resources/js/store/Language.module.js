@@ -40,6 +40,18 @@ export const mutations = {
     },
     appendNewLanguage (state, language) {
         state.listLanguage.push(language)
+    },
+    updateLanguage (state, updatedLanguage) {
+        let updatedLanguageIndex = state.listLanguage.findIndex(item => {
+            return item.id == updatedLanguage.id
+        })
+        state.listLanguage.splice(updatedLanguageIndex, 1, updatedLanguage)
+    },
+    removeLanguage (state, languageId) {
+        let deletedLanguageIndex = state.listLanguage.findIndex(item => {
+            return item.id == languageId
+        })
+        state.listLanguage.splice(deletedLanguageIndex, 1)
     }
 };
 
@@ -80,10 +92,10 @@ export const actions = {
 
     async updateLanguage (context, language) {
         await axios.patch('api/language/' + language.id , {
-            language
+            name: language.name
         })
         .then( response => {
-
+            context.commit('updateLanguage', response.data)
             console.log(response);
         })
         .catch(function (error) {
@@ -94,7 +106,7 @@ export const actions = {
     async deleteLanguage (context, language) {
         await axios.delete('api/language/' + language.id)
         .then( response => {
-            context.commit('removeLanguage', response.data)
+            context.commit('removeLanguage', language.id)
             console.log(response);
         })
         .catch(function (error) {

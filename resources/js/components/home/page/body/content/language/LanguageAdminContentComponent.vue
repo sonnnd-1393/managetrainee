@@ -131,7 +131,9 @@
         data() {
             return {
                 modalTitle: '',
-                updatedOrCreatedLanguage: '',
+                updatedOrCreatedLanguage: {
+                    'name': '',
+                },
             }
         },
         computed: {
@@ -152,18 +154,22 @@
             getListLanguage() {
                 this.$store.dispatch('language/setListLanguage')
             },
+            createLanguage(language) {
+                this.modalTitle = 'Create Language'
+                this.updatedOrCreatedLanguage = {
+                    'id': '',
+                    'name': '',
+                }
+            },
             updateLanguage(language) {
                 this.modalTitle = 'Update Language'
-                this.updatedOrCreatedLanguage = language
+                this.updatedOrCreatedLanguage.id = language.id
+                this.updatedOrCreatedLanguage.name = language.name
             },
             deleteLanguage(language) {
                 this.modalTitle = 'Delete Language'
                 this.updatedOrCreatedLanguage = language
-            },
-            createLanguage(language) {
-                this.modalTitle = 'Create Language'
-                this.updatedOrCreatedLanguage = ''
             }
-        }
+        },
     }
 </script>
