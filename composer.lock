@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "db0acdab3e360b521d33d38db5141bcc",
-=======
     "content-hash": "07520e194ac49f74b32cae2aacc264e9",
->>>>>>> second_pull
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -3787,7 +3783,6 @@
             "time": "2019-06-15T22:40:20+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "yajra/laravel-datatables-oracle",
             "version": "v9.4.1",
             "source": {
@@ -3817,7 +3812,9 @@
                 "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
                 "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
                 "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
-=======
+            }
+        },
+        {        
             "name": "zendframework/zend-diactoros",
             "version": "2.1.3",
             "source": {
@@ -3847,12 +3844,10 @@
                 "php-http/psr7-integration-tests": "dev-master",
                 "phpunit/phpunit": "^7.0.2",
                 "zendframework/zend-coding-standard": "~1.0.0"
->>>>>>> second_pull
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
                     "dev-master": "9.0-dev"
                 },
                 "laravel": {
@@ -3889,39 +3884,6 @@
                 "laravel"
             ],
             "time": "2019-06-12T05:06:59+00:00"
-=======
-                    "dev-master": "2.1.x-dev",
-                    "dev-develop": "2.2.x-dev",
-                    "dev-release-1.8": "1.8.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions/create_uploaded_file.php",
-                    "src/functions/marshal_headers_from_sapi.php",
-                    "src/functions/marshal_method_from_sapi.php",
-                    "src/functions/marshal_protocol_version_from_sapi.php",
-                    "src/functions/marshal_uri_from_sapi.php",
-                    "src/functions/normalize_server.php",
-                    "src/functions/normalize_uploaded_files.php",
-                    "src/functions/parse_cookie_header.php"
-                ],
-                "psr-4": {
-                    "Zend\\Diactoros\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "PSR HTTP Message implementations",
-            "keywords": [
-                "http",
-                "psr",
-                "psr-7"
-            ],
-            "time": "2019-07-10T16:13:25+00:00"
->>>>>>> second_pull
         }
     ],
     "packages-dev": [
