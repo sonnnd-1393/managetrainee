@@ -12,8 +12,10 @@ import Vue from 'vue'
 import DataTable from 'laravel-vue-datatable';
 import store from "./store/index.js";
 import router from './router/index.js';
+import i18n from './i18n/index.js';
 
 Vue.use(DataTable);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -54,5 +56,6 @@ const app = new Vue({
     el: '#app',
     store,
     router,
+    i18n,
   }).$mount('#app')
 
