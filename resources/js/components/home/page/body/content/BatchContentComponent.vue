@@ -140,19 +140,19 @@
 <script>
     export default {
         mounted() {
-            // $('#table-batch').DataTable({
-            //     destroy: true,
-            //     processing: true,
-            //     serverSide: true,
-            //     ajax: 'api/batch',
-            //     columns: [
-            //         { data: 'id', name: 'id' },
-            //         { data: 'name', name: 'name' },
-            //         { data: 'start_date', name: 'start_date' },
-            //         { data: 'end_date', name: 'end_date' },
-            //         { data: 'action', name: 'action' },
-            //     ],
-            // });
+            $('#table-batch').DataTable({
+                destroy: true,
+                processing: true,
+                serverSide: true,
+                ajax: 'api/batch',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'start_date', name: 'start_date' },
+                    { data: 'end_date', name: 'end_date' },
+                    { data: 'action', name: 'action' },
+                ],
+            });
             // let spans = document.querySelectorAll('.test');
             // spans.forEach(el => {
             //     el.addEventListener('click', this.clickTag);

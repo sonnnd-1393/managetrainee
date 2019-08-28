@@ -38,6 +38,7 @@ class LanguageController extends Controller
     public function store(Request $request)
     {
         $language = new Language;
+        // dd($request->all());
         $language->name = $request->name;
 
         $language->save();
